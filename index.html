@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KireaTech - Smart Innovation, Real Impact</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* ================= LOGIN ================= */
+    #loginPage {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #1d4ed8, #38bdf8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.35;
+    }
+
+    .circle1 {
+      width: 220px;
+      height: 220px;
+      background: #60a5fa;
+      top: 40px;
+      left: 60px;
+    }
+
+    .circle2 {
+      width: 280px;
+      height: 280px;
+      background: #2563eb;
+      bottom: 30px;
+      right: 50px;
+    }
+
+    .login-container {
+      position: relative;
+      width: 950px;
+      max-width: 100%;
+      min-height: 560px;
+      display: flex;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      z-index: 2;
+    }
+
+    .login-left {
+      width: 50%;
+      padding: 50px;
+      color: white;
+      background: linear-gradient(160deg, rgba(15,23,42,0.88), rgba(37,99,235,0.78));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .brand-text p {
+      margin: 4px 0 0;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .login-left h2 {
+      font-size: 34px;
+      margin: 10px 0 16px;
+      line-height: 1.2;
+    }
+
+    .login-left .desc {
+      color: #dbeafe;
+      line-height: 1.7;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px 16px;
+      border-radius: 14px;
+      color: #e5eefc;
+      font-size: 14px;
+    }
+
+    .login-right {
+      width: 50%;
+      background: rgba(255,255,255,0.96);
+      padding: 55px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-right h2 {
+      margin: 0;
+      color: #0f172a;
+      font-size: 30px;
+    }
+
+    .login-right .sub {
+      margin: 10px 0 28px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #334155;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .input-wrap input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      outline: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .input-wrap input:focus {
+      border-color: #2563eb;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.12);
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(90deg, #2563eb, #1d4ed8);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 10px 25px rgba(37,99,235,0.25);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(37,99,235,0.32);
+    }
+
+    .demo-box {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-size: 14px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    /* ================= DASHBOARD ================= */
+    #dashboardPage {
+      display: none;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 260px;
+      background: linear-gradient(180deg, #0f172a, #1e293b);
+      color: #fff;
+      padding: 25px 18px;
+      min-height: 100vh;
+    }
+
+    .sidebar .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .logo .logo-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 auto 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .sidebar .logo h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .sidebar .logo p {
+      margin: 6px 0 0;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    .menu-title {
+      color: #94a3b8;
+      font-size: 12px;
+      margin: 18px 10px 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #cbd5e1;
+      text-decoration: none;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      border-radius: 12px;
+      transition: 0.3s;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: rgba(59,130,246,0.20);
+      color: #fff;
+    }
+
+    .content {
+      flex: 1;
+      padding: 28px;
+    }
+
+    .topbar {
+      background: #fff;
+      padding: 18px 22px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .topbar-left h3 {
+      margin: 0;
+      font-size: 22px;
+      color: #0f172a;
+    }
+
+    .topbar-left p {
+      margin: 6px 0 0;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .topbar-right {
+      text-align: right;
+      font-size: 14px;
+      color: #475569;
+    }
+
+    .topbar-right .user {
+      font-weight: bold;
+      color: #0f172a;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8, #0f172a);
+      color: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(37,99,235,0.18);
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.7;
+      color: #e2e8f0;
+      max-width: 760px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .stat-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+    }
+
+    .stat-card .label {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .stat-card .value {
+      font-size: 28px;
+      font-weight: bold;
+      color: #0f172a;
+    }
+
+    .stat-card .desc {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .section {
+      background: #fff;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      margin-bottom: 22px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #0f172a;
+      font-size: 24px;
+    }
+
+    .section h3 {
+      color: #1d4ed8;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: #475569;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #334155;
+      line-height: 1.7;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 18px;
+      border-radius: 14px;
+    }
+
+    .mini-card h4 {
+      margin: 0 0 8px;
+      color: #0f172a;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .login-container {
+        flex-direction: column;
+        min-height: auto;
+      }
+
+      .login-left,
+      .login-right {
+        width: 100%;
+      }
+
+      .login-left,
+      .login-right {
+        padding: 35px;
+      }
+
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        min-height: auto;
+      }
+
+      .content {
+        padding: 18px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= LOGIN PAGE ================= -->
+  <section id="loginPage">
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+
+    <div class="login-container">
+      <!-- KIRI -->
+      <div class="login-left">
+        <div class="brand">
+          <div class="brand-logo">K</div>
+          <div class="brand-text">
+            <h1>KireaTech</h1>
+            <p>Smart Innovation, Real Impact</p>
+          </div>
+        </div>
+
+        <h2>Selamat Datang di Dashboard KireaTech</h2>
+        <p class="desc">
+          Kelola informasi perusahaan, produk, target pasar, dan analisa bisnis
+          dalam satu sistem yang modern, rapi, dan mudah digunakan.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">📊 Dashboard ringkas dan informatif</div>
+          <div class="feature-item">💼 Data profil & produk perusahaan</div>
+          <div class="feature-item">📈 Target pasar dan analisa SWOT</div>
+        </div>
+      </div>
+
+      <!-- KANAN -->
+      <div class="login-right">
+        <h2>Masuk ke akun</h2>
+        <p class="sub">Silakan login untuk mengakses dashboard admin KireaTech.</p>
+
+        <div class="error" id="loginError">Username atau password salah!</div>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label>Username</label>
+            <div class="input-wrap">
+              <input type="text" id="username" placeholder="Masukkan username" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-wrap">
+              <input type="password" id="password" placeholder="Masukkan password" required />
+            </div>
+          </div>
+
+          <button type="submit" class="login-btn">Login Sekarang</button>
+        </form>
+
+        <div class="demo-box">
+          <b>Demo Login</b><br />
+          Username: <b>admin</b><br />
+          Password: <b>12345</b>
+        </div>
+
+        <div class="footer-note">
+          © 2026 KireaTech. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DASHBOARD PAGE ================= -->
+  <section id="dashboardPage">
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="logo">
+          <div class="logo-box">K</div>
+          <h2>KireaTech</h2>
+          <p>Smart Innovation, Real Impact</p>
+        </div>
+
+        <div class="menu-title">Menu Utama</div>
+        <a class="menu-link active" data-page="dashboard">🏠 Dashboard</a>
+        <a class="menu-link" data-page="profil">🏢 Profil Perusahaan</a>
+        <a class="menu-link" data-page="produk">📦 Produk</a>
+        <a class="menu-link" data-page="target">🎯 Target Pasar</a>
+        <a class="menu-link" data-page="swot">📊 Analisa SWOT</a>
+
+        <div class="menu-title">Akun</div>
+        <a id="logoutBtn">🚪 Logout</a>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+        <div class="topbar">
+          <div class="topbar-left">
+            <h3>Dashboard Admin KireaTech</h3>
+            <p>Kelola profil perusahaan, produk, target pasar, dan analisa bisnis secara ringkas.</p>
+          </div>
+          <div class="topbar-right">
+            <div class="user">Halo, admin 👋</div>
+            <div id="todayDate"></div>
+          </div>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="page-content" id="page-dashboard">
+          <div class="hero">
+            <h1>Selamat Datang di KireaTech</h1>
+            <p>
+              KireaTech adalah perusahaan teknologi yang bergerak di bidang sistem informasi,
+              software development, dan solusi digital untuk mendukung transformasi bisnis,
+              pendidikan, dan layanan digital yang lebih modern.
+            </p>
+            <div class="badge">Smart Innovation, Real Impact</div>
+          </div>
+
+          <div class="stats">
+            <div class="stat-card">
+              <div class="label">Produk Utama</div>
+              <div class="value">5</div>
+              <div class="desc">KireaPOS, KireaSchool, KireaERP, KireaCloud, dan KireaSecure.</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">Target Pasar</div>
+              <div class="value">5</div>
+              <div class="desc">UMKM, sekolah, perusahaan swasta, instansi pemerintah, dan startup.</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">Fokus Layanan</div>
+              <div class="value">3</div>
+              <div class="desc">Sistem informasi, software development, dan solusi digital modern.</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2>Ringkasan Perusahaan</h2>
+            <div class="grid-2">
+              <div class="mini-card">
+                <h4>Visi</h4>
+                <p>Menjadi perusahaan teknologi inovatif yang mendukung transformasi digital.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Misi</h4>
+                <p>Menghadirkan sistem cerdas untuk meningkatkan efisiensi bisnis dan pendidikan.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Bidang</h4>
+                <p>Sistem informasi, software development, dan solusi digital.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Keunggulan</h4>
+                <p>Brand unik, teknologi modern, layanan fleksibel, dan solusi yang dapat disesuaikan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFIL -->
+        <div class="page-content hidden" id="page-profil">
+          <div class="section">
+            <h2>Profil Perusahaan</h2>
+            <p><b>Nama Usaha:</b> PT Kirea Teknologi Indonesia</p>
+            <p><b>Bidang:</b> Sistem informasi, software development, dan solusi digital</p>
+            <p><b>Visi:</b> Menjadi perusahaan teknologi inovatif yang mendukung transformasi digital</p>
+            <p><b>Misi:</b> Menghadirkan sistem cerdas untuk meningkatkan efisiensi bisnis dan pendidikan</p>
+            <p><b>Slogan:</b> Smart Innovation, Real Impact</p>
+          </div>
+        </div>
+
+        <!-- PRODUK -->
+        <div class="page-content hidden" id="page-produk">
+          <div class="section">
+            <h2>Produk Utama KireaTech</h2>
+            <ul>
+              <li><b>KireaPOS</b> – Sistem kasir digital modern</li>
+              <li><b>KireaSchool</b> – Sistem informasi sekolah terpadu</li>
+              <li><b>KireaERP</b> – Manajemen bisnis terintegrasi</li>
+              <li><b>KireaCloud</b> – Solusi penyimpanan data digital</li>
+              <li><b>KireaSecure</b> – Keamanan jaringan dan data</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TARGET -->
+        <div class="page-content hidden" id="page-target">
+          <div class="section">
+            <h2>Target Pasar</h2>
+            <ul>
+              <li>UMKM dan bisnis retail</li>
+              <li>Sekolah dan universitas</li>
+              <li>Perusahaan swasta</li>
+              <li>Instansi pemerintah</li>
+              <li>Startup dan bisnis digital</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SWOT -->
+        <div class="page-content hidden" id="page-swot">
+          <div class="section">
+            <h2>Analisa SWOT</h2>
+
+            <h3>Strengths (Kekuatan)</h3>
+            <ul>
+              <li>Nama brand unik dan mudah diingat</li>
+              <li>Produk teknologi modern</li>
+              <li>Bisa membantu bisnis dan sekolah</li>
+              <li>Sistem dapat disesuaikan kebutuhan pelanggan</li>
+              <li>Peluang pasar luas</li>
+            </ul>
+
+            <h3>Weaknesses (Kelemahan)</h3>
+            <ul>
+              <li>Brand masih baru</li>
+              <li>Belum banyak dikenal</li>
+              <li>Membutuhkan modal pengembangan</li>
+              <li>Harus memiliki tim IT yang kuat</li>
+              <li>Persaingan cukup tinggi</li>
+            </ul>
+
+            <h3>Opportunities (Peluang)</h3>
+            <ul>
+              <li>Banyak bisnis mulai digital</li>
+              <li>Sekolah membutuhkan sistem informasi</li>
+              <li>Teknologi semakin berkembang</li>
+              <li>Kebutuhan software meningkat</li>
+              <li>Peluang kerja sama luas</li>
+            </ul>
+
+            <h3>Threats (Ancaman)</h3>
+            <ul>
+              <li>Banyak pesaing besar</li>
+              <li>Teknologi cepat berubah</li>
+              <li>Risiko keamanan data</li>
+              <li>Konsumen memilih brand terkenal</li>
+              <li>Perubahan pasar</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const loginPage = document.getElementById("loginPage");
+    const dashboardPage = document.getElementById("dashboardPage");
+    const loginError = document.getElementById("loginError");
+    const menuLinks = document.querySelectorAll(".menu-link");
+    const pageContents = document.querySelectorAll(".page-content");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const todayDate = document.getElementById("todayDate");
+
+    // tampilkan tanggal
+    const now = new Date();
+    todayDate.textContent = now.toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
+
+    // login
+    loginForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === "admin" && password === "12345") {
+        loginError.style.display = "none";
+        loginPage.style.display = "none";
+        dashboardPage.style.display = "block";
+      } else {
+        loginError.style.display = "block";
+      }
+    });
+
+    // ganti halaman dashboard
+    menuLinks.forEach(link => {
+      link.addEventListener("click", function() {
+        const page = this.getAttribute("data-page");
+
+        menuLinks.forEach(item => item.classList.remove("active"));
+        this.classList.add("active");
+
+        pageContents.forEach(content => content.classList.add("hidden"));
+        document.getElementById("page-" + page).classList.remove("hidden");
+      });
+    });
+
+    // logout
+    logoutBtn.addEventListener("click", function() {
+      dashboardPage.style.display = "none";
+      loginPage.style.display = "flex";
+      loginForm.reset();
+      loginError.style.display = "none";
+
+      // kembali ke dashboard sebagai default saat login lagi
+      menuLinks.forEach(item => item.classList.remove("active"));
+      document.querySelector('[data-page="dashboard"]').classList.add("active");
+      pageContents.forEach(content => content.classList.add("hidden"));
+      document.getElementById("page-dashboard").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
